@@ -1,0 +1,9 @@
+matplotlib==3.2.2
+tensorflow_gpu==1.14.0
+pandas==1.0.5
+seaborn==0.10.1
+numpy==1.18.5
+tensorflow_addons==0.11.2
+tf_keras_vis==0.5.3
+scikit_learn==0.23.2
+tensorflow==2.3.1
