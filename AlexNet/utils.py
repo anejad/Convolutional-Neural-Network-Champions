@@ -6,6 +6,12 @@ import pandas as pd
 import numpy  as np
 from sklearn.metrics import confusion_matrix
 
+from matplotlib import cm
+from tf_keras_vis.gradcam import Gradcam
+from tf_keras_vis.utils import normalize
+from tensorflow.keras.preprocessing.image import load_img
+from tensorflow.keras.applications.imagenet_utils import preprocess_input
+
 plt.style.use('fivethirtyeight')
 plt.rcParams['figure.figsize'] = (8, 6)
 
@@ -147,3 +153,10 @@ def PlotMisMatch(datagen,preds,image_directory,Subset,Selected_Classes,cats,save
                                            transparent=True,\
                                             dpi=DPI)
             plt.show()
+# following function modify model last activation fucntion
+def model_modifier(m):
+    m.layers[-1].activation = tf.keras.activations.linear
+    return m
+
+def loss(output):
+    return (output[0][0], output[1][1])
